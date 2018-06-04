@@ -8,7 +8,7 @@ import h5py
 import argparse
 
 
-def print_node(node, indent: int = 4) -> None:
+def print_node(node, indent: int) -> None:
     """Print a indented representation of node
 
     Args:
@@ -30,9 +30,9 @@ def print_node(node, indent: int = 4) -> None:
     print(" " * indent * len(first) + last)
 
 
-def print_h5(h5filename, indent=4):
+def print_h5(h5filename: str, indent: int=4) -> None:
     """For a given HDF5 file, print its contents"""
-    with h5py.File(h5filename) as h5file:
+    with h5py.File(h5filename, mode='r') as h5file:
         h5file.visit(lambda node: print_node(node, indent=indent))
 
 
