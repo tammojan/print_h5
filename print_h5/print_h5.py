@@ -32,7 +32,7 @@ def print_node(node, indent: int) -> None:
 
 def print_h5(h5filename: str, indent: int=4) -> None:
     """For a given HDF5 file, print its contents"""
-    with h5py.File(h5filename) as h5file:
+    with h5py.File(h5filename, mode='r') as h5file:
         h5file.visit(lambda node: print_node(node, indent=indent))
 
 
